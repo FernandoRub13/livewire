@@ -1,0 +1,26 @@
+
+.btn{
+  @apply  inline-flex items-center px-4 py-2 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest;
+}
+
+/* MAke a button green */
+.btn-green{
+  @apply bg-green-500 hover:bg-green-600 active:bg-green-700 focus:outline-none focus:border-green-500 focus:ring focus:ring-green-300 disabled:opacity-25 transition;
+}
+
+.btn-red{
+  @apply bg-red-500 hover:bg-red-600 active:bg-red-700 focus:outline-none focus:border-red-500 focus:ring focus:ring-red-300 disabled:opacity-25 transition;
+}
+
+.btn-blue{
+  @apply bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-300 disabled:opacity-25 transition;
+}
+
+.btn-yellow{
+  @apply bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 focus:outline-none focus:border-yellow-500 focus:ring focus:ring-yellow-300 disabled:opacity-25 transition;
+}
+
+.btn-teal{
+  @apply bg-teal-500 hover:bg-teal-600 active:bg-teal-700 focus:outline-none focus:border-teal-500 focus:ring focus:ring-teal-300 disabled:opacity-25 transition;
+}
+
