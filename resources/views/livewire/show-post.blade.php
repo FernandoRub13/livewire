@@ -2,8 +2,18 @@
 
     <x-table>
         <div class="px-6 py-4 flex items-center">
+            <div class="flex items-center">
+                <span>Mostrar</span>
+                <select wire:model="quantity" class="ml-2 form-control">
+                    <option value="10"> 10 </option>
+                    <option value="20"> 20 </option>
+                    <option value="50"> 50 </option>
+                    <option value="100"> 100 </option>
+                </select>
+                <span class="ml-2">registros</span>
+            </div>
+            <x-jet-input type="text" wire:model='search' class="mr-2 flex-1 " placeholder="Escribe el post a buscar..." /> 
             @livewire('create-post')
-           <x-jet-input type="text" wire:model='search' class="ml-2 flex-1 " placeholder="Escribe el post a buscar..." /> 
         </div>
         <div wire:loading class="flex justify-center">
             Ordenando registros...
@@ -14,7 +24,7 @@
 
                 <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
                     <tr>
-                        <th wire:click="order('id')" class="cursor-pointer p-2 whitespace-nowrap">
+                        <th wire:click="order('id')" class="cursor-pointer p-2 w-8">
                             <div class="font-semibold text-left">ID
                                 @if ($sort == 'id')
                                     @if ($direction == 'desc')
@@ -90,6 +100,14 @@
                 </div>
             </div>
         @endif
+
+        @if ($posts->hasPages())
+            <div class="px-6 py-3">
+                {{ $posts->links() }}
+            </div>
+            
+        @endif
+            
     </x-table>
 
     <x-jet-dialog-modal wire:model="open_edit">
