@@ -20,6 +20,8 @@ class ShowPost extends Component
     public $image, $identifier = null;
     public $quantity = '10';
 
+    public $ready = false;
+
     protected $queryString = [
         'search' => ['except' => ''], 
         'sort' => ['except' => 'id'],
@@ -50,20 +52,25 @@ class ShowPost extends Component
     
     public function render()
     {
-        if($this->sort == '' && $this->search == '') {
-            // Get only the next columns from posts: 'id', 'title', 'content', 'image'.
-            $posts = Post::select(['id', 'title', 'content', 'image'])->orderBy('id', 'desc')->paginate($this->quantity);
-
-        }else if($this->sort != ''){
-            $posts = Post::where('title', 'like', "%{$this->search}%")
-            ->orWhere('content', 'like', "%{$this->search}%")
-            ->orderBy($this->sort, $this->direction)
-            ->paginate($this->quantity);
+        if($this->ready) {
+            if($this->sort == '' && $this->search == '') {
+                // Get only the next columns from posts: 'id', 'title', 'content', 'image'.
+                $posts = Post::select(['id', 'title', 'content', 'image'])->orderBy('id', 'desc')->paginate($this->quantity);
+    
+            }else if($this->sort != ''){
+                $posts = Post::where('title', 'like', "%{$this->search}%")
+                ->orWhere('content', 'like', "%{$this->search}%")
+                ->orderBy($this->sort, $this->direction)
+                ->paginate($this->quantity);
+            }else{
+                $posts = Post::where('title', 'like', "%{$this->search}%")
+                ->orWhere('content', 'like', "%{$this->search}%")
+                ->paginate($this->quantity);
+            }
         }else{
-            $posts = Post::where('title', 'like', "%{$this->search}%")
-            ->orWhere('content', 'like', "%{$this->search}%")
-            ->paginate($this->quantity);
+            $posts = [];
         }
+        
 
         return view('livewire.show-post', compact('posts'));
     }
@@ -95,6 +102,11 @@ class ShowPost extends Component
 
         $this->identifier = uniqid();
         $this->emit('alert', 'success', 'Post actualizado', 'El post se ha actualizado correctamente');
+    }
+
+    public function loadPost()
+    {
+        $this->ready = true;
     }
 
 }

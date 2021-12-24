@@ -1,4 +1,4 @@
-<div>
+<div wire:init="loadPost" >
 
     <x-table>
         <div class="px-6 py-4 flex items-center">
@@ -19,7 +19,7 @@
             Ordenando registros...
         </div>
         
-        @if ($posts->count())
+        @if (count($posts))
             <table class="table-auto w-full">
 
                 <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
@@ -91,6 +91,12 @@
         
                 </tbody>
             </table>
+            @if ($posts->hasPages())
+                <div class="px-6 py-3">
+                    {{ $posts->links() }}
+                </div>
+                
+            @endif
         @else
             <div class="flex justify-center">
                 <div class="text-center">
@@ -101,12 +107,6 @@
             </div>
         @endif
 
-        @if ($posts->hasPages())
-            <div class="px-6 py-3">
-                {{ $posts->links() }}
-            </div>
-            
-        @endif
             
     </x-table>
 
