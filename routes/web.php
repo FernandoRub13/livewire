@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Alpine;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\ShowPost;
 
@@ -18,4 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', ShowPost::class)->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', ShowPost::class)->name('dashboard'); 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/alpine', Alpine::class)->name('alpine'); 

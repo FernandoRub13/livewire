@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{asset('vendor/fontawesome-free-5.15.4-web/css/all.min.css')}}">
         <link rel="stylesheet" href="{{asset('vendor/fontawesome-free-5.15.4-web/css/fontawesome.min.css')}}">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"> --}}
 
         @livewireStyles
 

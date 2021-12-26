@@ -5498,6 +5498,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ "./node_modules/sweetalert2/dist/sweetalert2.all.js");
 /* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
 
+window.Swal = (sweetalert2__WEBPACK_IMPORTED_MODULE_0___default());
 Livewire.on('alert', function (type, title, text) {
   sweetalert2__WEBPACK_IMPORTED_MODULE_0___default().fire({
     title: title,

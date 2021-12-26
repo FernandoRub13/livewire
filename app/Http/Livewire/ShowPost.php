@@ -30,7 +30,9 @@ class ShowPost extends Component
         'quantity' => ['except' => '10'],
     ];
 
-
+    protected $listeners = [
+        'delete' => 'deletePost',
+    ];
 
     public function mount()
     {
@@ -49,6 +51,11 @@ class ShowPost extends Component
         
     ];
 
+    public function deletePost(Post $deletePost)
+    {
+        $deletePost->delete();
+
+    }
     
     public function render()
     {
